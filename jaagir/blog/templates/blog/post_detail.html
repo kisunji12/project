@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid text-dark p-4" style="height:350px">
+<div class="container py-5">
+  <h1 class="display-4">{{object.title}}</h1>
+</div>
+<div class="text-muted container">
+<p class="mb-4">{{object.job_description}}</p>
+
+{% if object.author == user %}
+<a class="btn btn-outline-info btn-sm me-1" href="{% url 'post-update' object.id%}">Update</a>
+<a class="btn btn-outline-danger btn-sm" href="{% url 'post-delete' object.id%}">Delete</a>
+{% endif %}
+
+<hr>
+<small class="text-muted">{{object.post_date|date:" d M, Y "}}</small>
+
+</div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+
+
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="jumbotron bg-darker text-light p-4">
+<div class="container py-5">
+  <h1 class="display-4">Nepal's Job Portal</h1>
+  <p class="lead-4">Are you still need a job?</p>
+</div>
+<div class="text-muted container">
+  <p>A job portal, also known as a career portal, is a modern name for an online job board that helps applicants find jobs and aids employers in their quest to locate ideal candidates. Career websites, such as Monster, Indeed and SimplyHired, have job portals that offer a broad range of jobs in a vast number of fields. Some government agencies, nonprofit organizations, universities and private businesses have their own job portals that applicants can access on the organization's website.</p>
+</div>
+</div>
+
+<div class="container">
+  <hr>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for post in posts %}
+    {% if post.author != user  %}
+      <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><a class="text-decoration-none" href="{% url 'post-detail' post.id %}">{{post.title}}</a></h5>
+          <p class="card-text">{{post.snippet}}</p>
+          <a class="btn btn-outline-success btn-sm me-1" href="{% url 'post-apply' %}">Apply</a>
+
+          <a class="btn btn-outline-info btn-sm" href="{% url 'post-detail' post.id %}">Details</a>
+
+          </div>
+        <div class="card-footer">
+        <small class="text-muted">Create by {{post.author}} On {{post.post_date|date:" d M, Y "}}</small>
+      </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock content %}

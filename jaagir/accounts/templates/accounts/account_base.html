@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+  </head>
+  <body>
+
+    {% block account_content%} {% endblock %}
+
+    <script type="text/javascript" src="{% static 'blog/bootstrap.js' %}"></script>
+  </body>
+</html>
